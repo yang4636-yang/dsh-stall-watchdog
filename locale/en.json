@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Stall watchdog",
+    "description": "Watches each tool call and, when one runs longer than the threshold, injects a self-check reminder so the model notices the stall instead of waiting silently."
+  }
+}

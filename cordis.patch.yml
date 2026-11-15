@@ -1,0 +1,10 @@
+- insert:
+    - id: stall-watchdog
+      name: 'dsh-stall-watchdog'
+      config:
+        # 阈值等时间参数都在「设置 → 插件 → 环节超时自查」里直接改，无需编辑本文件。
+        # 这里只给默认排除的后台类工具；用户改动会被设置页写入的 profile 层覆盖。
+        excludeTools:
+          - job_output
+          - generate_image
+          - generate_video

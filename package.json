@@ -1,0 +1,63 @@
+{
+  "name": "dsh-stall-watchdog",
+  "version": "1.2.0",
+  "private": false,
+  "type": "module",
+  "description": "DeepSeek Harness plugin: watches each tool call and, when one runs past a threshold, injects a self-check reminder into the model's next step. Threshold and cadence are editable live in the plugin page.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "watchdog",
+    "timeout",
+    "agent"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0-rc.2 <0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/dsh-stall-watchdog.git"
+  },
+  "homepage": "https://github.com/OWNER/dsh-stall-watchdog#readme",
+  "bugs": "https://github.com/OWNER/dsh-stall-watchdog/issues",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@deepseek-ai/schemastery": "~3.18.4"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
+    }
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check client.js"
+  }
+}
